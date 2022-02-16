@@ -20,14 +20,14 @@ import com.hana897trx.coffe4coders.ui.theme.Coffe4CodersTheme
 import com.hana897trx.coffe4coders.ui.theme.PlatziBlue
 import com.hana897trx.coffe4coders.ui.theme.PlatziGreen
 
-enum class  CountryISO(val iso : String) {
+enum class CountryISO(val iso: String) {
     COL("COL"),
     BRA("BRA"),
     CRI("CRI"),
     NIC("NIC");
 
-    fun getBackgroundImage() : Int {
-        return when(this) {
+    fun getBackgroundImage(): Int {
+        return when (this) {
             COL -> R.drawable.co
             BRA -> R.drawable.br
             CRI -> R.drawable.flagri
@@ -35,8 +35,8 @@ enum class  CountryISO(val iso : String) {
         }
     }
 
-    fun getCountryFlag() : Int {
-        return when(this) {
+    fun getCountryFlag(): Int {
+        return when (this) {
             COL -> R.drawable.flagco
             BRA -> R.drawable.flagbr
             CRI -> R.drawable.flagri
@@ -44,26 +44,40 @@ enum class  CountryISO(val iso : String) {
         }
     }
 
-    fun getSurface() : Color {
-        return when(this) {
+    fun getSurface(): Color {
+        return when (this) {
             COL, NIC -> PlatziBlue
             BRA, CRI -> PlatziGreen
         }
     }
 }
 
+typealias SelectionAction = () -> Unit
+
 @Composable
-fun ProductCard(name : String, summary : String, price : Double, currency : String, country : CountryISO) {
+fun ProductCard(
+    name: String,
+    summary: String,
+    price: Double,
+    currency: String,
+    country: CountryISO,
+    selected: SelectionAction
+) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .padding(16.dp)
-            .clickable { }
+            .clickable {
+                selected()
+            }
             .size(480.dp),
         elevation = 10.dp,
         shape = MaterialTheme.shapes.small
     ) {
-        Image(painter = painterResource(id = country.getBackgroundImage()), contentDescription = null)
+        Image(
+            painter = painterResource(id = country.getBackgroundImage()),
+            contentDescription = null
+        )
         Surface(
             modifier = Modifier.fillMaxWidth(),
             color = country.getSurface().copy(0.2F)
@@ -78,13 +92,14 @@ fun ProductCard(name : String, summary : String, price : Double, currency : Stri
                     modifier = Modifier.fillMaxSize(),
                     verticalArrangement = Arrangement.Bottom
                 ) {
-                    Row (modifier = Modifier.fillMaxWidth()){
+                    Row(modifier = Modifier.fillMaxWidth()) {
                         Image(
                             painter = painterResource(id = country.getCountryFlag()),
                             contentDescription = null,
                             modifier = Modifier.size(32.dp, 32.dp)
                         )
-                        Text("$ $price $currency",
+                        Text(
+                            "$ $price $currency",
                             modifier = Modifier.fillMaxWidth(),
                             textAlign = TextAlign.End,
                             color = Color.White,
@@ -108,6 +123,8 @@ fun ProductCardPreview() {
             "Café de las montañas",
             35.0, "USD",
             CountryISO.BRA
-        )
+        ) {
+
+        }
     }
 }
