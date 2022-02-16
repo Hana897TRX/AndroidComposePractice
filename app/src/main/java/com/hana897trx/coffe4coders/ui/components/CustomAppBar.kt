@@ -1,11 +1,10 @@
 package com.hana897trx.coffe4coders.ui.components
 
 import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
-import com.hana897trx.coffe4coders.ui.theme.Coffe4CodersTheme
+import com.hana897trx.coffe4coders.ui.theme.Coffee4CodersTheme
 
 @Composable
 fun CustomAppBar(
@@ -36,7 +35,7 @@ fun CustomAppBar(
 )
 @Composable
 fun CustomAppBarPreview() {
-    Coffe4CodersTheme() {
+    Coffee4CodersTheme() {
         CustomAppBar("Coffe 4 Coders") {
 
         }

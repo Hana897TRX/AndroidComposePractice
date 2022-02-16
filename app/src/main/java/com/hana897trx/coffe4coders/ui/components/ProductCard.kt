@@ -16,7 +16,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.hana897trx.coffe4coders.R
-import com.hana897trx.coffe4coders.ui.theme.Coffe4CodersTheme
+import com.hana897trx.coffe4coders.ui.theme.Coffee4CodersTheme
 import com.hana897trx.coffe4coders.ui.theme.PlatziBlue
 import com.hana897trx.coffe4coders.ui.theme.PlatziGreen
 
@@ -117,7 +117,7 @@ fun ProductCard(
 )
 @Composable
 fun ProductCardPreview() {
-    Coffe4CodersTheme {
+    Coffee4CodersTheme {
         ProductCard(
             "Café de brasil",
             "Café de las montañas",

@@ -15,7 +15,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.hana897trx.coffe4coders.ui.components.*
-import com.hana897trx.coffe4coders.ui.theme.Coffe4CodersTheme
+import com.hana897trx.coffe4coders.ui.theme.Coffee4CodersTheme
 
 @Composable
 fun FeedScreen(navController: NavController) {
@@ -25,7 +25,7 @@ fun FeedScreen(navController: NavController) {
         CountryISO.NIC,
         CountryISO.BRA
     )
-    Coffe4CodersTheme {
+    Coffee4CodersTheme {
         Scaffold(topBar = { CustomAppBar("Coffee 4 Coders", navigationIcon = null) {} }, content = {
             Surface(
                 color = MaterialTheme.colors.background
