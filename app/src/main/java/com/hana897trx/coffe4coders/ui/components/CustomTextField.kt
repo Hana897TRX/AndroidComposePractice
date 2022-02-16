@@ -1,5 +1,6 @@
 package com.hana897trx.coffe4coders.ui.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
@@ -25,7 +26,8 @@ fun CustomTextField(
     enabled: Boolean = true,
     trailingIcon: @Composable (() -> Unit)? = null,
     onGloballyPositioned : ((LayoutCoordinates) -> Unit) ? = null,
-    onValueChange : (String) -> Unit
+    onValueChange : (String) -> Unit,
+    onClick : (() -> Unit) ? = null
 ) {
     val focusManager = LocalFocusManager.current
     OutlinedTextField(
@@ -46,6 +48,10 @@ fun CustomTextField(
                 if(onGloballyPositioned != null) {
                     onGloballyPositioned(coordinates)
                 }
+            }.clickable {
+                if (onClick != null) {
+                    onClick()
+                }
             },
         enabled = enabled,
         keyboardActions = KeyboardActions(
@@ -63,8 +69,6 @@ fun CustomTextField(
 @Composable
 fun CustomTextFieldPreview() {
     Coffee4CodersTheme {
-        CustomTextField("", "Text field") {
-
-        }
+        CustomTextField("", "Text field", onValueChange = {})
     }
 }
